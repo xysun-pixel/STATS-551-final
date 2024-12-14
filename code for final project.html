@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="sxy">
+
+<title>final</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="code for final project_files/libs/clipboard/clipboard.min.js"></script>
+<script src="code for final project_files/libs/quarto-html/quarto.js"></script>
+<script src="code for final project_files/libs/quarto-html/popper.min.js"></script>
+<script src="code for final project_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="code for final project_files/libs/quarto-html/anchor.min.js"></script>
+<link href="code for final project_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="code for final project_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="code for final project_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="code for final project_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="code for final project_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">final</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>sxy </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="ave-income" class="level2">
+<h2 class="anchored" data-anchor-id="ave-income">AVE INCOME</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载必要的库</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取 CSV 文件</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>agidf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"AGI.csv"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(agidf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  STATEFIPS STATE zipcode agi_stub     N1  mars1  MARS2  MARS4    ELF CPREP
+1         1    AL       0        1 785000 519980  85690 165290 724170 22560
+2         1    AL       0        2 554310 270870 121420 146470 515150 13260
+3         1    AL       0        3 290630 113280 124770  44570 269700  6420
+4         1    AL       0        4 181010  42010 120820  14410 168830  2570
+5         1    AL       0        5 269080  31310 224330   8270 252360  3250
+6         1    AL       0        6  81340   5000  72270    630  76810   230
+    PREP DIR_DEP VRTCRIND      N2 TOTAL_VITA  VITA  TCE VITA_EIC    RAC ELDERLY
+1 394860  604650     6070 1146880      14710 10420 4290     2520 196970  157390
+2 284210  431830     4800 1018620       8560  6490 2070      150 144400  118740
+3 162160  202590     3130  588070       1790  1190  600        0  49680   83480
+4 104710  119460     1350  426390        500   280  220        0  22390   58100
+5 157390  149170     2440  714280        440   440    0        0  17060   87030
+6  58450   22220      540  229380         20    20    0        0    630   28210
+    A00100 N02650   A02650 N00200   A00200 N00300 A00300 N00600  A00600 N00650
+1  9993188 784880 10172698 592280  7337898 106620  68617  41690   76749  37600
+2 19926130 554310 20123988 478230 15977550  94580  77682  40340   98849  36320
+3 17836964 290630 18005183 248010 13715822  85430  81806  39990  128535  36400
+4 15696161 181010 15830735 154210 11603626  71480  78020  34730  142674  31810
+5 36746997 269070 37080401 236510 27070076 142950 197151  81620  463136  75970
+6 38093390  81340 38522725  71250 18364894  61440 405300  46980 1275783  44930
+   A00650 N00700 A00700 N00900  A00900 N01000  A01000 N01400  A01400 N01700
+1   51041   1380    851 142920  613142  37450   38846  33410  222921  99140
+2   69824   6240   4259  76700  299637  34800   83452  31070  326356 105570
+3   91044  11720   9748  44410  297729  35550  129091  25850  371918  79160
+4  104974   9310   9253  30750  271281  31160  161058  20210  385865  59270
+5  355073  30250  38343  52620  804545  74540  788947  35440 1052712  95380
+6 1070649   8910  15282  20530 1221380  46160 4907986  10570  615323  23030
+   A01700 SCHF N02300  A02300 N02500  A02500 N26270  A26270 N02900 A02900
+1  966931 6440 122250 1222758  45240  100687   6910    6881 241490 179510
+2 1823408 7840  91030  936458  94610  702310   9320   35952 220020 197858
+3 1947497 8220  34650  297236  67270 1098143  10490   94643 152190 168219
+4 1856812 4520  21720  175154  47740 1043098   8050  119642 106880 134574
+5 3962550 9970  24930  189886  64800 1719611  25760  806674 175680 333404
+6 1440819 1860   2230   17768  16020  494732  27590 6846263  47230 429335
+  N03220 A03220 N03300 A03300 N03270 A03270 N03150 A03150 N03210 A03210 N02910
+1   1380    324     20    289   5480  19902    840   2583   9560   7261 138810
+2   9990   2423     70    651   5570  26774   5920  21161  29990  22029 165870
+3  10440   2639     80   1112   4470  29023   4880  22272  25440  19959 117340
+4   6620   1761    110   1536   2130  16708   2190  12087  16880  12574  85140
+5  14130   3881   1380  24245   7220  67001   5380  34096  26010  21064 137150
+6   1200    305   2980  94973   8120 109565    680   6688      0      0  27210
+  A02910 N04450   A04450 N04100   A04100 N04200 A04200 N04470  A04470   A00101
+1  36490 775650 11399255 775650 11176596 118200 222775   7860  174658   153839
+2  44460 535330  9146881 535330  8992314  79470 155933  19360  461698   761166
+3  31764 268610  5184306 268600  5079554  53320 104820  23300  573503  1509995
+4  23308 161570  3584349 161580  3508922  37130  76037  18110  488577  1662110
+5  37865 219100  5245622 219060  5140381  48870 103303  50590 1654328  7734077
+6   7598  38500   942576  38500   920805   8640  18345  40310 2603776 23899702
+  N17000 A17000 N18425 A18425 N18450 A18450 N18500 A18500 N18800 A18800 N18460
+1   4910  78126   1490   2628   3030   3196   2140   3706   2210    621   6110
+2  12330 166225  10390  21886   5870   8153   9890  13656   8740   3529  15930
+3   9570 133161  16060  47986   4970   8404  16620  23254  13750   5500  21000
+4   5500  85219  13310  52426   2350   4625  13950  23402  10880   4042  16750
+5   7490 127311  43140 270370   4120  10589  43580  91847  34640  14142  48140
+6    660  18235  37800 793663    830   2548  37380 169367  27940  16050  39580
+  A18460 N18300 A18300 N19300 A19300 N19500 A19500 N19530 A19530 N19550 A19550
+1  12780   6520  14170   1890  14001      0      0     20      9    220    354
+2  43912  16590  50742   8500  59368     20    285    150    108   1820   2972
+3  80188  21760  88008  15530 112857     20    174    200    137   4770   7749
+4  82714  17160  87841  12470 100105     60    300    350    272   3600   5885
+5 346779  48610 352145  40050 390787    190   1058   2440   2422    180    162
+6 379498  39720 381997  31640 454950    300   3043   2450   1957      0      0
+  N19570 A19570 N19700  A19700 N20950 A20950 N04475  A04475 N04800   A04800
+1     20     36   4000   16766    680  14583  24220   15552 303130  1597551
+2     70    280  14770  102291   2950  60815  49180   72033 547980 10292819
+3    100    116  18880  149195   2610  55841  36880   85951 290020 12040671
+4     70    284  14710  137475   1410  38137  28970   93535 180740 11502741
+5   1000   3381  44570  585092   4130 133681  61820  315985 268890 29529968
+6   4160  46696  37530 1430148   2790  93307  37870 1139171  81300 33040258
+  N05800  A05800 N09600 A09600 N05780 A05780 N07100 A07100 N07300 A07300 N07180
+1 302070  162966      0      0   6650   2687 127090  44506   1420     41   3410
+2 545010 1114951      0      0  12100   9333 270150 317950   6770    423  25140
+3 289410 1438164      0      0   1330   2554 129010 281760   9390    682  13410
+4 180420 1454748      0      0    140    544  82840 230440   7460    772  11300
+5 268620 4385314     20    367      0      0 144110 413505  23540   4071  21860
+6  81270 7688241    320   3951      0      0  46590 156815  19050  20612   4400
+  A07180 N07230 A07230 N07240 A07240 N07225 A07225 N07260 A07260 N09400 A09400
+1   1133  23740  12153  34320   5937  64180  23159    890    515 107880 141870
+2  14084  39130  42642  94360  19453 191680 232869  11020  10516  43700 103930
+3   7083  18720  23500  22190   3660 100170 232282   8410  11249  28170  79302
+4   6113  13190  16523      0      0  69980 195928   4090   5723  20330  65432
+5  12117  19830  26519      0      0 120680 348128   5400   5802  36170 159547
+6   2373      0      0      0      0  27960  80947    750    313  18480 173878
+  N85770 A85770 N85775 A85775 N10600  A10600 N59660 A59660 N59720 A59720 N11070
+1  36880 329626  37620 328437 711840 2043603 309590 859459 280050 775406 174290
+2  21530 179961  21860 184541 541630 2245020 158480 375143 144580 336593 140120
+3   2210  19537   3300  27900 286330 1731114   2230   1245   1310    711  26570
+4      0      0    260   2079 179200 1602537      0      0      0      0   2690
+5      0      0      0      0 266790 4412153      0      0      0      0      0
+6      0      0      0      0  80280 7435208      0      0      0      0      0
+  A11070 N10960 A10960 N11560 A11560 N11450 A11450 N10970 A10970 N10971 A10971
+1 276625  43310  38347  18530  11528   9730  15280 195620 302151 540630 879733
+2 265751  27760  24742   6590   6392   2990   6184  80730 112990 488400 852087
+3  46462  13240  11851    110    182    670   1507  40130  52341 267330 527953
+4   4428   8030   7090      0      0    140    267  27560  31687 167380 377247
+5      0  16150  14687      0      0    540   1615  44200  63173 231330 559821
+6      0      0      0      0      0     50    225    150     70  24350  42036
+  N10973 A10973 N06500  A06500 N10300  A10300 N85530 A85530 N85300 A85300
+1 491220 478476 203510  117946 305510  262537      0      0      0      0
+2 464130 485032 389210  797949 415440  911102      0      0      0      0
+3 253470 291571 261400 1157485 268290 1246578      0      0      0      0
+4 153780 206948 175560 1223692 177190 1300006      0      0      0      0
+5 205260 299405 267480 3970676 267960 4155095   1000    325    100     20
+6  12270  13899  81210 7528220  81290 7982126  33190  59576  41750 164094
+  N11901  A11901 N11900  A11900 N11902  A11902 N12000 A12000
+1  57720   46577 674840 1827202 672200 1818867   2900   6089
+2  81770  112540 470410 1445383 466960 1432458   4660  11648
+3  70360  144380 220710  626662 216530  610170   5760  16235
+4  49500  135429 130670  437179 126790  419324   3730  14903
+5 103250  470206 165650  724529 156910  642895  11280  80064
+6  43960 1216690  34560  735671  24770  285560   9630 391783</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算每个州的人均收入</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ave_agi <span class="ot">&lt;-</span> agidf <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span> <span class="fu">sum</span>(N2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),  <span class="co"># 计算每个州的总人口</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_income =</span> <span class="fu">sum</span>(A00100, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),      <span class="co"># 计算每个州的总收入</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_tax =</span> <span class="fu">sum</span>(A18300, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">per_capita_tax =</span> total_tax<span class="sc">/</span>total_income) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre class="{tion)  # 计算人均收入}"><code></code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看结果</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ave_agi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 5
+   STATE total_population total_income total_tax per_capita_tax
+   &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
+ 1 AK             1290970     52947054    243604        0.00460
+ 2 AL             8248810    276585660   1949806        0.00705
+ 3 AR             5044920    167904402   1020058        0.00608
+ 4 AZ            12465060    488399454   4090530        0.00838
+ 5 CA            70327820   3621250506  51249102        0.0142 
+ 6 CO            10269910    508917114   5397120        0.0106 
+ 7 CT             6368170    382659348   4110310        0.0107 
+ 8 DC             1050600     78838848   1195818        0.0152 
+ 9 DE             1787140     73797590    739878        0.0100 
+10 FL            38268970   1775522262  11291742        0.00636
+# ℹ 41 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="medicare-stats" class="level2">
+<h2 class="anchored" data-anchor-id="medicare-stats">MEDICARE STATS</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"medicare_2020.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建州名到缩写的映射</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>state_abbreviations <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alabama"</span> <span class="ot">=</span> <span class="st">"AL"</span>, <span class="st">"Alaska"</span> <span class="ot">=</span> <span class="st">"AK"</span>, <span class="st">"Arizona"</span> <span class="ot">=</span> <span class="st">"AZ"</span>, <span class="st">"Arkansas"</span> <span class="ot">=</span> <span class="st">"AR"</span>, <span class="st">"California"</span> <span class="ot">=</span> <span class="st">"CA"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Colorado"</span> <span class="ot">=</span> <span class="st">"CO"</span>, <span class="st">"Connecticut"</span> <span class="ot">=</span> <span class="st">"CT"</span>, <span class="st">"Delaware"</span> <span class="ot">=</span> <span class="st">"DE"</span>, <span class="st">"Florida"</span> <span class="ot">=</span> <span class="st">"FL"</span>, <span class="st">"Georgia"</span> <span class="ot">=</span> <span class="st">"GA"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hawaii"</span> <span class="ot">=</span> <span class="st">"HI"</span>, <span class="st">"Idaho"</span> <span class="ot">=</span> <span class="st">"ID"</span>, <span class="st">"Illinois"</span> <span class="ot">=</span> <span class="st">"IL"</span>, <span class="st">"Indiana"</span> <span class="ot">=</span> <span class="st">"IN"</span>, <span class="st">"Iowa"</span> <span class="ot">=</span> <span class="st">"IA"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Kansas"</span> <span class="ot">=</span> <span class="st">"KS"</span>, <span class="st">"Kentucky"</span> <span class="ot">=</span> <span class="st">"KY"</span>, <span class="st">"Louisiana"</span> <span class="ot">=</span> <span class="st">"LA"</span>, <span class="st">"Maine"</span> <span class="ot">=</span> <span class="st">"ME"</span>, <span class="st">"Maryland"</span> <span class="ot">=</span> <span class="st">"MD"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Massachusetts"</span> <span class="ot">=</span> <span class="st">"MA"</span>, <span class="st">"Michigan"</span> <span class="ot">=</span> <span class="st">"MI"</span>, <span class="st">"Minnesota"</span> <span class="ot">=</span> <span class="st">"MN"</span>, <span class="st">"Mississippi"</span> <span class="ot">=</span> <span class="st">"MS"</span>, <span class="st">"Missouri"</span> <span class="ot">=</span> <span class="st">"MO"</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Montana"</span> <span class="ot">=</span> <span class="st">"MT"</span>, <span class="st">"Nebraska"</span> <span class="ot">=</span> <span class="st">"NE"</span>, <span class="st">"Nevada"</span> <span class="ot">=</span> <span class="st">"NV"</span>, <span class="st">"New Hampshire"</span> <span class="ot">=</span> <span class="st">"NH"</span>, <span class="st">"New Jersey"</span> <span class="ot">=</span> <span class="st">"NJ"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"New Mexico"</span> <span class="ot">=</span> <span class="st">"NM"</span>, <span class="st">"New York"</span> <span class="ot">=</span> <span class="st">"NY"</span>, <span class="st">"North Carolina"</span> <span class="ot">=</span> <span class="st">"NC"</span>, <span class="st">"North Dakota"</span> <span class="ot">=</span> <span class="st">"ND"</span>, <span class="st">"Ohio"</span> <span class="ot">=</span> <span class="st">"OH"</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Oklahoma"</span> <span class="ot">=</span> <span class="st">"OK"</span>, <span class="st">"Oregon"</span> <span class="ot">=</span> <span class="st">"OR"</span>, <span class="st">"Pennsylvania"</span> <span class="ot">=</span> <span class="st">"PA"</span>, <span class="st">"Rhode Island"</span> <span class="ot">=</span> <span class="st">"RI"</span>, <span class="st">"South Carolina"</span> <span class="ot">=</span> <span class="st">"SC"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"South Dakota"</span> <span class="ot">=</span> <span class="st">"SD"</span>, <span class="st">"Tennessee"</span> <span class="ot">=</span> <span class="st">"TN"</span>, <span class="st">"Texas"</span> <span class="ot">=</span> <span class="st">"TX"</span>, <span class="st">"Utah"</span> <span class="ot">=</span> <span class="st">"UT"</span>, <span class="st">"Vermont"</span> <span class="ot">=</span> <span class="st">"VT"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Virginia"</span> <span class="ot">=</span> <span class="st">"VA"</span>, <span class="st">"Washington"</span> <span class="ot">=</span> <span class="st">"WA"</span>, <span class="st">"West Virginia"</span> <span class="ot">=</span> <span class="st">"WV"</span>, <span class="st">"Wisconsin"</span> <span class="ot">=</span> <span class="st">"WI"</span>, <span class="st">"Wyoming"</span> <span class="ot">=</span> <span class="st">"WY"</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 将 STATE 列转换为州缩写</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Rndrng_Prvdr_Geo_Desc <span class="ot">&lt;-</span> state_abbreviations[df<span class="sc">$</span>Rndrng_Prvdr_Geo_Desc]</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 过滤出工种为 "Anesthesia for procedure on brain" 的记录</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(HCPCS_Desc <span class="sc">==</span> <span class="st">"Anesthesia for procedure to correct abnormal heart rhythm"</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算各个州的该工种的人均保险数额</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> filtered_df <span class="sc">%&gt;%</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Rndrng_Prvdr_Geo_Desc) <span class="sc">%&gt;%</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_mdcr_stdzd_amt =</span> <span class="fu">mean</span>(Avg_Mdcr_Stdzd_Amt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> result <span class="sc">%&gt;%</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">STATE =</span> Rndrng_Prvdr_Geo_Desc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 2
+   STATE avg_mdcr_stdzd_amt
+   &lt;chr&gt;              &lt;dbl&gt;
+ 1 AK                  75.3
+ 2 AL                  69.2
+ 3 AR                  87.6
+ 4 AZ                  71.5
+ 5 CA                  88.8
+ 6 CO                  67.2
+ 7 CT                  62.5
+ 8 DE                  49.5
+ 9 FL                  66.3
+10 GA                  52.2
+# ℹ 41 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="merge" class="level2">
+<h2 class="anchored" data-anchor-id="merge">MERGE</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(ave_agi, filtered_df, <span class="at">by =</span> <span class="st">"STATE"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>merged_df  <span class="ot">&lt;-</span> df[df<span class="sc">$</span>per_capita_tax <span class="sc">&lt;=</span><span class="fl">0.017</span> <span class="sc">&amp;</span> df<span class="sc">$</span>per_capita_tax <span class="sc">&gt;=</span><span class="fl">0.006</span> ,]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#merged_df  &lt;- df</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看合并后的数据框</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(merged_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 43 × 6
+   STATE total_population total_income total_tax per_capita_tax
+   &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
+ 1 AL             8248810    276585660   1949806        0.00705
+ 2 AR             5044920    167904402   1020058        0.00608
+ 3 AZ            12465060    488399454   4090530        0.00838
+ 4 CA            70327820   3621250506  51249102        0.0142 
+ 5 CO            10269910    508917114   5397120        0.0106 
+ 6 CT             6368170    382659348   4110310        0.0107 
+ 7 DC             1050600     78838848   1195818        0.0152 
+ 8 DE             1787140     73797590    739878        0.0100 
+ 9 FL            38268970   1775522262  11291742        0.00636
+10 GA            18570220    694029670   8432010        0.0121 
+# ℹ 33 more rows
+# ℹ 1 more variable: avg_mdcr_stdzd_amt &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设 merged_df 是你合并后的数据框，并且已经有 per_capita_income 和 avg_mdcr_stdzd_amt 列</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 例如: merged_df 中包含 per_capita_income 和 avg_mdcr_stdzd_amt 两列</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制散点图</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged_df, <span class="fu">aes</span>(<span class="at">x =</span> per_capita_tax, <span class="at">y =</span> avg_mdcr_stdzd_amt)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="co"># 绘制散点</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatter Plot of Per Capita Income vs Avg Medicare Standardized Amount"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Per Capita Income"</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Medicare Standardized Amount"</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()  <span class="co"># 使用简洁主题</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="code-for-final-project_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"nlme"</span>)) <span class="fu">install.packages</span>(<span class="st">"nlme"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: nlme</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'nlme'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    collapse</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_mdcr_stdzd_amt <span class="sc">~</span> per_capita_tax, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> merged_df, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = avg_mdcr_stdzd_amt ~ per_capita_tax, data = merged_df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-20.490  -6.377  -2.675   9.754  27.570 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      64.348      7.404    8.69 9.39e-11 ***
+per_capita_tax  439.622    799.338    0.55    0.585    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 12.81 on 40 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.007505,  Adjusted R-squared:  -0.01731 
+F-statistic: 0.3025 on 1 and 40 DF,  p-value: 0.5854</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)<span class="sc">$</span>sigma</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.80676</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制散点图和线性回归拟合线</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged_df, <span class="fu">aes</span>(<span class="at">x =</span> per_capita_tax, <span class="at">y =</span> avg_mdcr_stdzd_amt)) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="co"># 绘制散点</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span>  <span class="co"># 绘制线性回归线</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatter Plot with Linear Fit of Per Capita Income vs Avg Medicare Standardized Amount"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Per Capita Income"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Medicare Standardized Amount"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="code-for-final-project_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
